@@ -30,9 +30,11 @@ public class Map extends Mapper<Object, Text, Text, Text>{
             String [] tweets = tweetfile.split("\\n");
 
             for(String tweet : tweets){
-                for(int i = 0; i < keywords.size(); i++){
-                    if(tweet.contains(keywords.get(i))){
-                        context.write(new Text(keywords.get(i)), new Text(tweet));
+                for(String word : tweet.split(" ")){
+                    for(int i = 0; i < keywords.size(); i++) {
+                        if (word.replace("#","").equals(keywords.get(i))) {
+                            context.write(new Text(keywords.get(i)), new Text(tweet));
+                        }
                     }
                 }
             }
