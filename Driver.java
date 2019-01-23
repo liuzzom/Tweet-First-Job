@@ -12,7 +12,7 @@ public class Driver extends Configured implements Tool{
     public int run(String[] args) throws Exception{
         Configuration conf = getConf();
 
-        Job job = Job.getInstance(conf, "WordCount");
+        Job job = Job.getInstance(conf, "TweetsFirstJob");
         job.setJarByClass(Driver.class);
         job.setMapperClass(Map.class);
         job.setOutputKeyClass(Text.class);

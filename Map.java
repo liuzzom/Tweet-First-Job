@@ -6,13 +6,12 @@ import java.util.ArrayList;
 
 import org.apache.hadoop.mapreduce.Mapper;
 import org.apache.hadoop.io.Text;
-/*import org.apache.hadoop.conf.Configuration;
-import org.apache.hadoop.fs.FileSystem;
-import org.apache.hadoop.fs.Path;*/
 
 
 public class Map extends Mapper<Object, Text, Text, Text>{
 
+    // the mapper check if a tweet contains one or more keywords
+    // the control is done word by word
     public void map(Object key, Text value, Context context) throws IOException, InterruptedException{
         try(FileReader in = new FileReader("/home/mauroliuzzo/IdeaProjects/Tweets-First-Job/dataset/keywords.txt"); BufferedReader inFile = new BufferedReader(in)){
             // Keywords import
